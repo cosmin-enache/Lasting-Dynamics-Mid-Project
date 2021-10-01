@@ -14,7 +14,9 @@ const DrawerStyling = {
     width: 255,
     flexShrink: 0,
     '& .MuiDrawer-paper': {
+        position: "relative",
         width: 255,
+        height: 1152,
     },
 };
 

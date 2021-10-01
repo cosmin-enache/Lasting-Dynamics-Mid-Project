@@ -6,8 +6,8 @@ const AppBarCustom = () => {
             sx={AppBarStyling}
         >
             <Toolbar style={ToolbarStyling}>
-                <Typography variant="p" fontSize={17}>Dashboard</Typography>
-                <Box style={{ float: "right" }}>
+                <Typography variant="p" fontSize={17} fontWeight={500}>Dashboard</Typography>
+                <Box>
                     <Typography variant="p" fontSize={15}>What's new</Typography>
                 </Box>
             </Toolbar>
@@ -17,6 +17,7 @@ const AppBarCustom = () => {
 
 const AppBarStyling = {
     width: `calc(100% - ${255}px)`,
+    position: "absolute",
     marginLeft: 255,
     height: 60,
     background: "white",
