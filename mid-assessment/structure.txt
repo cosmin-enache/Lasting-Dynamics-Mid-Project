@@ -1,0 +1,64 @@
+Drawer
+    (Logo)
+    (Hamburger)
+    [Drawer item + expandable with List element maybe?]
+    DrawerItem
+        (Icon)
+        (Text)
+        (When active, style accordingly)
+    DrawerExpandable(Like marketing tab in the design)
+        DrawerExpandableItem
+    Divider
+    (Select your shop)
+    (Shop select)
+AppBar
+    Title
+    (notifications-container)
+        (Icon)
+        (What's new)
+        (Red notif)
+MainContainer
+    (Absolutely Positioned Blue Container)
+        (Welcome User!)
+        (LinkContainer)
+            (Link)
+            (Link Icon)
+    ContentContainer (Grid container offset top)
+        CenterContent (Grid item md-8)
+            (Grid Container)
+                (Grid item md-6)
+                    InfoCard (Derive from MUI Card)
+                (Grid item md-6)
+                    InfoCard (Derive from MUI Card)
+                (Grid item md-6)
+                    PromoCard (Derive from MUI Card)
+                (Grid item md-6)
+                    InfoCard (Derive from MUI Card)
+                (Grid item md-12)
+                    InfoCard (Derive from MUI Card)
+                        GridContainer
+                            (Grid Item md-6) ... repeat 8 times
+                                NewsCard (Box | Flex)
+                                    ImageContainer
+                                        Image
+                                    Title
+                                    Heading
+                                    Link  
+        SideContent (Grid item md-4)
+            InfoCard (Derive from MUI Card)
+            InfoCard (Derive from MUI Card)
+            InfoCard (Derive from MUI Card)
+            InfoCard (Derive from MUI Card)
+
+- Data will be pulled on app load using useEffect, by a custom context provider component.
+- Use a custom hook to access context data
+- Load 'NewsCard' data from the api data.
+
+REASONING
+
+- The MUI library has been used for high-end out-of-the box components
+    PROS
+    Good looking tested components
+
+    CONS
+    More difficult to override styling than to create custom components
