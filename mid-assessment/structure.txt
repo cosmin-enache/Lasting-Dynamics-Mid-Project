@@ -22,7 +22,7 @@ MainContainer
         (Welcome User!)
         (LinkContainer)
             (Link)
-            (Link Icon)
+                (Link Icon)
     ContentContainer (Grid container offset top)
         CenterContent (Grid item md-8)
             (Grid Container)
@@ -45,10 +45,10 @@ MainContainer
                                     Heading
                                     Link  
         SideContent (Grid item md-4)
-            InfoCard (Derive from MUI Card)
-            InfoCard (Derive from MUI Card)
-            InfoCard (Derive from MUI Card)
-            InfoCard (Derive from MUI Card)
+            InfoCard (Derive from MUI Card)(md-12)
+            InfoCard (Derive from MUI Card)(md-12)
+            InfoCard (Derive from MUI Card)(md-12)
+            InfoCard (Derive from MUI Card)(md-12)
 
 - Data will be pulled on app load using useEffect, by a custom context provider component.
 - Use a custom hook to access context data

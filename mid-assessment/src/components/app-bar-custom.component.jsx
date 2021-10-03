@@ -6,9 +6,14 @@ const AppBarCustom = () => {
             sx={AppBarStyling}
         >
             <Toolbar style={ToolbarStyling}>
-                <Typography variant="p" fontSize={17} fontWeight={500}>Dashboard</Typography>
+                <Typography
+                    variant="p"
+                    fontSize="17px"
+                    fontWeight={500}
+                    lineHeight="22px"
+                >Dashboard</Typography>
                 <Box>
-                    <Typography variant="p" fontSize={15}>What's new</Typography>
+                    <Typography variant="p" fontSize="15px" fontWeight={300}>What's new</Typography>
                 </Box>
             </Toolbar>
         </AppBar>

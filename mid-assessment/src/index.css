@@ -11,6 +11,7 @@ body {
 body, body * {
   box-sizing: border-box;
   color: #103B66;
+  font-family: 'Noto Sans HK', sans-serif !important;
 }
 
 code {
