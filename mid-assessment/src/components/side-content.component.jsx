@@ -9,7 +9,7 @@ import ArrowRightIcon from "../assets/images/arrow-right-icon.svg";
 const SideContent = () => {
     return (
         <Grid container id="side-content">
-            <Grid item md={12}>
+            <Grid item md={12} ml="24px">
                 <InfoCard>
                     <Box sx={CardTopRowStyling}>
                         <Box>

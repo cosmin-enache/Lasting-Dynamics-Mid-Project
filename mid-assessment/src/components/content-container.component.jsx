@@ -4,7 +4,7 @@ import SideContent from "./side-content.component";
 
 const ContentContainer = () => {
     return (
-        <Grid container id="content-container" sx={ContentContainerStyling} spacing={3}>
+        <Grid container id="content-container" sx={ContentContainerStyling} >
             <Grid item md={8}>
                 <CenterContent />
             </Grid>
