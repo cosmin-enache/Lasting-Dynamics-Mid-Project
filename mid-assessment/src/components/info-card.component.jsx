@@ -1,8 +1,13 @@
 import { Card } from "@mui/material"
 
-const InfoCard = ({ children }) => {
+const InfoCard = ({ children, ...otherProps }) => {
+    const CombinedStyling = {
+        ...CardStyling,
+        ...otherProps
+    };
+
     return (
-        <Card sx={CardStyling}>
+        <Card sx={CombinedStyling}>
             {children}
         </Card>
     )
@@ -14,7 +19,7 @@ const CardStyling = {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    padding: "24px",
+    padding: "24px"
 };
 
 export default InfoCard;

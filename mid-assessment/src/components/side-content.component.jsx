@@ -9,7 +9,7 @@ import ArrowRightIcon from "../assets/images/arrow-right-icon.svg";
 const SideContent = () => {
     return (
         <Grid container id="side-content">
-            <Grid item md={12} ml="24px">
+            <Grid item md={12} ml="24px" mb="24px">
                 <InfoCard>
                     <Box sx={CardTopRowStyling}>
                         <Box>
@@ -25,6 +25,27 @@ const SideContent = () => {
                     </Box>
                     <Box sx={FirstCardCenterBottomStyling}>
                         <Typography variant="span">
+                            Complete all the steps to have a complete shop to best present to your customers.
+                        </Typography>
+                    </Box>
+                    <Link href="#" sx={CardBottomLinkStyling}>
+                        Complete the setup
+                        <img src={ArrowRightIcon} alt="right arrow" style={RightArrowIconStyling} />
+                    </Link>
+                </InfoCard>
+            </Grid>
+            <Grid item md={12} ml="24px" mb="24px">
+                <InfoCard backgroundColor="#000032">
+                    <Box sx={CardTopRowStyling}>
+                        <Box>
+                            <img src={ToolIcon} alt="card icon" />
+                            <Typography className="font-white" variant="span" sx={CardTitleStylingSecondary}>
+                                Configure your shop
+                            </Typography>
+                        </Box>
+                    </Box>
+                    <Box sx={FirstCardCenterBottomStyling}>
+                        <Typography className="font-white" variant="span">
                             Complete all the steps to have a complete shop to best present to your customers.
                         </Typography>
                     </Box>
