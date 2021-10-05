@@ -6,6 +6,11 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #F8F9FB;
+  overflow-x: hidden;
+}
+
+.active > path {
+  stroke: "red" !important;
 }
 
 body, body * {
@@ -16,6 +21,15 @@ body, body * {
 
 .font-white {
   color: white !important;
+}
+
+.font-tp-green {
+  color: #00C48C !important;
+}
+
+.active-drawer-item {
+  border-left: 5px solid #21B8F9 !important;
+  background: #F7F7F7 !important;
 }
 
 code {

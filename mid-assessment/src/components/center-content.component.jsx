@@ -90,7 +90,7 @@ const CenterContent = () => {
                     </Box>
                     <Box sx={StoreIconsBoxStyling}>
                         <img style={StoreIconStyling} src={AppleStoreIcon} alt="apple store" />
-                        <img style={StoreIconStyling} src={GooglePlayIcon} alt="google play" />
+                        <img style={StoreIconStylingLarge} src={GooglePlayIcon} alt="google play" />
                     </Box>
                 </InfoCard>
             </Grid>
@@ -182,6 +182,11 @@ const FourthCardCenterStyling = {
 
 const StoreIconStyling = {
     width: "126px",
+    height: "42px",
+};
+
+const StoreIconStylingLarge = {
+    width: "146px",
     height: "42px",
 };
 

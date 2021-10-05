@@ -1,0 +1,10 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+	<title>Cog Planet</title>
+	<defs>
+		<image  width="20" height="20" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAMAAAC6V+0/AAAAAXNSR0IB2cksfwAAAHJQTFRFAAAAEEBgEDpmEDtmEDtmEDlkEDhgEDllEDtmEDhoEDtlEDtmEDpmEDtlEDtlEDplEDtmEDxmEEBwEDhkEDlmEDpmEDtmEDtnEDxkEDxlEDpmEDtnED1mEDplEDplEDljEDlmEDVlEDpnEDpmEDpnEDtk7+J45wAAACZ0Uk5TABDf/+9wIG/fIO+Pf5+/YHCAEEBwgM+/QJCvn1AwkFCgMK/AkKCsHZ+1AAAA6UlEQVR4nF1Ra5ODIAxciFJIrdHzVNC7tvfo//+LF8DOdG4/5LHDhiUAFcYSNQYvaB1OPgQ+w3VP7sK+ZwEG9syXg/NBxrdSyhBsYYVCTlPbTjkHei9XzIDreVnZR6Dz5Ywd4Thl/UgRkj3Mm8rXvY4flOFtBu0f+KxjFRwRdwJdRc6NHFg2kU5Jay2XwBpqB3tTO40q73uV526dszdzkPQFXHu0esrkOpMTZYsCw/QPXmUDSUw+xu+fGJffKHk1wMM7o09R+UTB2VQdJy9pMffd2HTix3Ohot78ui5EPLzsXjb9Dru1da1/De0MXZ9RLecAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+		tspan { white-space:pre }
+	</style>
+	<use id="Background" href="#img1" x="0" y="0" />
+</svg>
