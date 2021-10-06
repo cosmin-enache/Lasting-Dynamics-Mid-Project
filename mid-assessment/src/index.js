@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { NewsProvider } from './context/news.context';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <NewsProvider>
+      <App />
+    </NewsProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

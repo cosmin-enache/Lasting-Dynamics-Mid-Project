@@ -1,6 +1,9 @@
 import { Grid, Box, Typography, Link } from "@mui/material";
 
 import InfoCard from "./info-card.component";
+import useNews from "../custom-hooks/news.hook";
+import { useEffect } from "react";
+import { fetchNewsData } from "../news-api.interface";
 
 // Icons / Images
 import EyeIcon from "../assets/images/eye-icon.svg";
@@ -14,10 +17,39 @@ import GooglePlayIcon from "../assets/images/google-play.svg";
 import ExtensionsMpIcon from "../assets/images/extensions-marketplace.svg";
 import DomainImage from "../assets/images/domain-www.svg";
 import FiftyProducts from "../assets/images/products-50+.svg";
+import FileTextIcon from "../assets/images/file-text.svg";
+import ExternalLinkBlueIcon from "../assets/images/external-link-blue.svg";
+import NewsCard from "./news-card.component";
 
 const CenterContent = () => {
+    const [newsData, setNewsData] = useNews();
+
+    useEffect(() => {
+        fetchNewsData(setNewsData);
+    }, []);
+
+    const renderNews = () => {
+        return newsData ? (
+            <Grid container spacing={1}>
+                {
+                    newsData.filter((_, i) => i < 8).map(
+                        (data) => (
+                            <Grid item md={6}>
+                                <NewsCard {...data} />
+                            </Grid>
+                        )
+                    )
+                }
+            </Grid>
+        ) : (
+            <Grid item md={5}>
+
+            </Grid>
+        );
+    }
+
     return (
-        <Grid container id="center-content" spacing={3}>
+        <Grid container id="center-content" spacing={2}>
             <Grid item md={6}>
                 <InfoCard height="218px">
                     <Box sx={CardTopRowStyling}>
@@ -122,6 +154,27 @@ const CenterContent = () => {
                         Discover all extensions
                         <img src={ArrowRightIcon} alt="right arrow" style={RightArrowIconStyling} />
                     </Link>
+                </InfoCard>
+            </Grid>
+            <Grid item md={12}>
+                <InfoCard height="auto">
+                    <Box sx={CardTopRowStyling}>
+                        <Box>
+                            <img src={FileTextIcon} alt="card icon" />
+                            <Typography variant="span" sx={CardTitleStyling}>
+                                Latest news
+                            </Typography>
+                        </Box>
+                        <Box>
+                            <Link href="#" sx={CardBottomLinkStyling}>
+                                Visit our blog
+                                <img src={ExternalLinkBlueIcon} alt="right arrow" style={RightArrowIconStyling} />
+                            </Link>
+                        </Box>
+                    </Box>
+                    <Box mt="20px">
+                        {renderNews()}
+                    </Box>
                 </InfoCard>
             </Grid>
         </Grid>
