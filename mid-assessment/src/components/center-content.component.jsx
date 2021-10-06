@@ -42,7 +42,7 @@ const CenterContent = () => {
                 }
             </Grid>
         ) : (
-            <Grid item md={5}>
+            <Grid item md={6}>
 
             </Grid>
         );

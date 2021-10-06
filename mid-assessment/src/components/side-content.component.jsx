@@ -13,7 +13,7 @@ import UserAvatarImage from "../assets/images/sample-avatar.png";
 
 const SideContent = () => {
     return (
-        <Grid container id="side-content">
+        <Grid container id="side-content" sx={SideGridStyling}>
             <Grid item md={12} ml="24px" mb="24px">
                 <InfoCard>
                     <Box sx={CardTopRowStyling}>
@@ -118,6 +118,13 @@ const SideContent = () => {
             </Grid>
         </Grid>
     )
+};
+
+const SideGridStyling = {
+    "> *": {
+        ml: "16px !important",
+        mb: "16px !important",
+    },
 };
 
 const ButtonContainedStyling = {
