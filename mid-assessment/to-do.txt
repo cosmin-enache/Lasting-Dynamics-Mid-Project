@@ -1,0 +1,4 @@
+- Open Close Drawer
+- Work more on the drawer css
+- Make the cards more reusable (Keep the common elements as props)
+- Add routes
