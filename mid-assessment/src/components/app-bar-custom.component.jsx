@@ -1,20 +1,42 @@
-import { Toolbar, AppBar, Typography, Box } from "@mui/material";
+import { Toolbar, AppBar, Typography, Box, IconButton } from "@mui/material";
 
 // Icons / Images
 import ZapIcon from "../assets/images/zap-icon.svg";
+import { ReactComponent as HamburgerIcon } from "../assets/images/hamburger-icon.svg";
 
-const AppBarCustom = () => {
+const AppBarCustom = ({ appDrawerState }) => {
+    const { appDrawerOpen, setAppDrawerOpen } = appDrawerState;
+
+    const AppBarStyling = {
+        width: `calc(100% - ${appDrawerOpen ? 0 : 255}px)`,
+        position: "fixed",
+        marginLeft: appDrawerOpen ? 0 : 255,
+        height: 55,
+        left: appDrawerOpen && 0,
+        background: "white",
+        boxShadow: "none",
+    };
+
     return (
         <AppBar
             sx={AppBarStyling}
         >
             <Toolbar style={ToolbarStyling}>
-                <Typography
-                    variant="p"
-                    fontSize="17px"
-                    fontWeight={500}
-                    lineHeight="22px"
-                >Dashboard</Typography>
+                <Box>
+                    {
+                        appDrawerOpen && (
+                            <IconButton onClick={() => setAppDrawerOpen(false)} sx={HamburgerIconStyling}>
+                                <HamburgerIcon />
+                            </IconButton>
+                        )
+                    }
+                    <Typography
+                        variant="p"
+                        fontSize="17px"
+                        fontWeight={500}
+                        lineHeight="22px"
+                    >Dashboard</Typography>
+                </Box>
                 <Box sx={TopRightContentBoxStyling}>
                     <img style={ZapIconStyling} src={ZapIcon} alt="zap icon" />
                     <Typography variant="p" fontSize="15px" fontWeight={300}>What's new</Typography>
@@ -27,13 +49,10 @@ const AppBarCustom = () => {
     )
 };
 
-const AppBarStyling = {
-    width: `calc(100% - ${255}px)`,
-    position: "fixed",
-    marginLeft: 255,
-    height: 60,
-    background: "white",
-    boxShadow: "none"
+const HamburgerIconStyling = {
+    position: "relative",
+    left: "-30px",
+    top: "-2px",
 };
 
 const TopRightContentBoxStyling = {

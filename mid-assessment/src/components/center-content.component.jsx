@@ -1,8 +1,7 @@
 import { Grid, Box, Typography, Link } from "@mui/material";
 
 import InfoCard from "./info-card.component";
-import useNews from "../custom-hooks/news.hook";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchNewsData } from "../news-api.interface";
 
 // Icons / Images
@@ -22,7 +21,7 @@ import ExternalLinkBlueIcon from "../assets/images/external-link-blue.svg";
 import NewsCard from "./news-card.component";
 
 const CenterContent = () => {
-    const [newsData, setNewsData] = useNews();
+    const [newsData, setNewsData] = useState(null);
 
     useEffect(() => {
         fetchNewsData(setNewsData);

@@ -10,8 +10,6 @@ const DrawerExpandable = ({ text, icon, children, handleClick }) => {
 
         if (nextValue) {
             target.classList.add("active-drawer-item");
-        } else {
-
         }
 
         setOpen(nextValue);

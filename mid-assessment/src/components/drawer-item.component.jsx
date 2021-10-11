@@ -19,7 +19,7 @@ const DrawerItem = ({ icon, text, children, handleClick }) => {
                 <ListItemIcon>
                     {icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={text} sx={ListItemTextStyling} />
                 {children}
             </ListItemButton>
         </ListItem>
@@ -44,11 +44,16 @@ export const DrawerItemCanExpand = ({ icon, text, expanded, handleClick }) => {
                 <ListItemIcon>
                     {icon}
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={text} sx={ListItemTextStyling} />
                 {renderExpand()}
             </ListItemButton>
         </ListItem>
     )
+};
+
+const ListItemTextStyling = {
+    position: "relative",
+    left: "-15px",
 };
 
 export default DrawerItem;

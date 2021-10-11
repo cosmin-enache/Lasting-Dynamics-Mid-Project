@@ -1,15 +1,12 @@
 import Grid from "@mui/material/Grid";
 import CenterContent from "./center-content.component";
 import SideContent from "./side-content.component";
-import { NewsProvider } from "../context/news.context";
 
 const ContentContainer = () => {
     return (
         <Grid container id="content-container" sx={ContentContainerStyling} >
             <Grid item md={8}>
-                <NewsProvider>
-                    <CenterContent />
-                </NewsProvider>
+                <CenterContent />
             </Grid>
             <Grid item md={4}>
                 <SideContent />

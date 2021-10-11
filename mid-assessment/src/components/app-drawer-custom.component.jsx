@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 
-import { Drawer, Box, List, Divider, Typography, MenuItem } from "@mui/material";
+import { Drawer, Box, List, Divider, Typography, MenuItem, IconButton } from "@mui/material";
 import DrawerItem from "./drawer-item.component";
 import DrawerExpandable from "./drawer-expandable.component";
 import SelectCustom from "./select-custom.component";
@@ -25,10 +25,11 @@ import { ReactComponent as HelpCircleIcon } from "../assets/images/drawer/help-c
 import { ReactComponent as ShareIcon } from "../assets/images/drawer/share.svg";
 import { ReactComponent as EyeIcon } from "../assets/images/drawer/eye.svg";
 
-const AppDrawerCustom = () => {
+const AppDrawerCustom = ({ appDrawerState }) => {
+    const { appDrawerOpen, setAppDrawerOpen } = appDrawerState;
+
     const [activeListItem, setActiveListItem] = useState(null);
     const itemListRef = useRef();
-
     const setCurrentActiveListItem = ({ target }) => {
         setActiveListItem(target);
     };
@@ -64,32 +65,43 @@ const AppDrawerCustom = () => {
         >
             <Box sx={LogoBoxStyling}>
                 <img src={VetrinaLogoImage} alt="vetrina logo" />
-                <HamburgerIcon style={HamburgerIconStyling} className="active" />
+                <IconButton onClick={() => setAppDrawerOpen(true)}>
+                    <HamburgerIcon style={HamburgerIconStyling} />
+                </IconButton>
             </Box>
             <Box>
                 <List ref={itemListRef}>
                     <DrawerItem icon={<HomeIcon />} text="Dashboard" handleClick={setCurrentActiveListItem} />
-                    <DrawerExpandable icon={<ShoppingCartIcon />} text="Catalogue" handleClick={clearActiveListItemClass}>
-                        <DrawerItem text="Credits" />
-                        <DrawerItem text="Technologies" />
-                        <DrawerItem text="Applications" />
-                        <DrawerItem text="Platforms" />
-                    </DrawerExpandable>
+                    {
+                        !appDrawerOpen && (
+                            <DrawerExpandable icon={<ShoppingCartIcon />} text="Catalogue" handleClick={clearActiveListItemClass}>
+                                <DrawerItem text="Credits" />
+                                <DrawerItem text="Technologies" />
+                                <DrawerItem text="Applications" />
+                                <DrawerItem text="Platforms" />
+                            </DrawerExpandable>
+                        )
+                    }
+
                     <DrawerItem icon={<ListIcon />} text="Orders" handleClick={setCurrentActiveListItem}>
                         <Typography sx={OrdersNotificationStyling}>14</Typography>
                     </DrawerItem>
                     <DrawerItem icon={<UserIcon />} text="Customers" handleClick={setCurrentActiveListItem} />
-                    <DrawerExpandable icon={<TargetIcon />} text="Marketing" handleClick={clearActiveListItemClass}>
-                        <DrawerItem text="Discount codes" />
-                        <DrawerItem text="Exit intent" />
-                        <DrawerItem text="Checkout Features" />
-                        <DrawerItem text="Post-purchase conversion" />
-                        <DrawerItem text="Cart abandonment" />
-                        <DrawerItem text="Timer checkout" />
-                        <DrawerItem text="Sell on Social" />
-                        <DrawerItem text="Special Offer" />
-                        <DrawerItem text="Seasonal Offer" />
-                    </DrawerExpandable>
+                    {
+                        !appDrawerOpen && (
+                            <DrawerExpandable icon={<TargetIcon />} text="Marketing" handleClick={clearActiveListItemClass}>
+                                <DrawerItem text="Discount codes" />
+                                <DrawerItem text="Exit intent" />
+                                <DrawerItem text="Checkout Features" />
+                                <DrawerItem text="Post-purchase conversion" />
+                                <DrawerItem text="Cart abandonment" />
+                                <DrawerItem text="Timer checkout" />
+                                <DrawerItem text="Sell on Social" />
+                                <DrawerItem text="Special Offer" />
+                                <DrawerItem text="Seasonal Offer" />
+                            </DrawerExpandable>
+                        )
+                    }
                     <DrawerItem icon={<TruckIcon />} text="Delivery Options" handleClick={setCurrentActiveListItem} />
                     <DrawerItem icon={<DollarSignIcon />} text="Payment Options" handleClick={setCurrentActiveListItem} />
                     <DrawerItem icon={<BrushIcon />} text="Store Design" handleClick={setCurrentActiveListItem} />
@@ -104,15 +116,19 @@ const AppDrawerCustom = () => {
                     <DrawerItem icon={<EyeIcon />} text="View your shop" handleClick={setCurrentActiveListItem} />
                 </List>
             </Box>
-            <Box sx={SelectYourShopBoxStyling}>
-                <Typography variant="body1" mb="22px">
-                    Select your shop
-                </Typography>
-                <SelectCustom label="Fenoh Store">
-                    <MenuItem value={0}>App Store</MenuItem>
-                    <MenuItem value={1}>Google Play</MenuItem>
-                </SelectCustom>
-            </Box>
+            {
+                !appDrawerOpen && (
+                    <Box sx={SelectYourShopBoxStyling}>
+                        <Typography variant="body1" mb="22px">
+                            Select your shop
+                        </Typography>
+                        <SelectCustom label="Fenoh Store">
+                            <MenuItem value={0}>App Store</MenuItem>
+                            <MenuItem value={1}>Google Play</MenuItem>
+                        </SelectCustom>
+                    </Box>
+                )
+            }
         </Drawer>
     );
 };
@@ -157,6 +173,7 @@ const DrawerStyling = {
         position: "fixed",
         width: 255,
         height: "100vh",
+        zIndex: -1,
     },
 };
 
