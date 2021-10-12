@@ -30,8 +30,8 @@ const CenterContent = () => {
             <Grid container spacing={1}>
                 {
                     newsData.filter((_, i) => i < 8).map(
-                        (data) => (
-                            <Grid item md={6}>
+                        (data, key) => (
+                            <Grid item md={6} key={key}>
                                 <NewsCard {...data} />
                             </Grid>
                         )

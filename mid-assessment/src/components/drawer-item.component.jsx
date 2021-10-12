@@ -10,30 +10,39 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 
 import { withRouter } from "react-router-dom";
 
-const urlBasedOnLinkText = text => text.toLowerCase().split(" ").join("-");
+const urlBasedOnLinkText = text => {
+    // replacing `-` character with space which might conflict when parsing back to url
+    text = text.toLowerCase().replace("-", " ");
+
+    return text.split(" ").join("-");
+}
 
 const DrawerItem = ({ icon, text, children, handleClick, history }) => {
     const ListItemButtonStyling = {
         "> *": { pointerEvents: "none" }
     };
 
+    const toUrl = urlBasedOnLinkText(text);
+    const currentPath = history.location.pathname.slice(1); // skips `/` character
+
     const handleClickThenPushToRoute = event => {
         if (handleClick) {
             handleClick(event);
         }
 
-        const toUrl = urlBasedOnLinkText(text);
-
         // send to link built by the following helper function
         history.push(
-            toUrl === "dashboard" ? "/" : toUrl,
+            toUrl,
             "ALLOW"
         );
     };
 
     return (
         <ListItem disablePadding>
-            <ListItemButton onClick={handleClickThenPushToRoute} sx={ListItemButtonStyling}>
+            <ListItemButton
+                className={toUrl === currentPath && "active-drawer-item"}
+                onClick={handleClickThenPushToRoute} sx={ListItemButtonStyling}
+            >
                 <ListItemIcon>
                     {icon}
                 </ListItemIcon>

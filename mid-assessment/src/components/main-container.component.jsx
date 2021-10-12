@@ -19,6 +19,7 @@ const MainContainer = ({ appDrawerOpen }) => {
         <Box id="main-container" sx={MainContainerStyling}>
             <Switch>
                 <Route exact path="/" component={DashboardPage} />
+                <Route exact path="/dashboard" component={DashboardPage} />
                 <Route path="/*" component={LinkPage} />
             </Switch>
         </Box>

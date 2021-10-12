@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 
 import { Drawer, Box, List, Divider, Typography, MenuItem, IconButton } from "@mui/material";
 import DrawerItem from "./drawer-item.component";
@@ -30,36 +30,6 @@ import { withRouter } from "react-router-dom";
 const AppDrawerCustom = ({ appDrawerState, history }) => {
     const { appDrawerOpen, setAppDrawerOpen } = appDrawerState;
 
-    const [activeListItem, setActiveListItem] = useState(null);
-    const itemListRef = useRef();
-
-    const setCurrentActiveListItem = ({ target }) => {
-        setActiveListItem(target);
-    };
-
-    const clearActiveListItemClass = () => {
-        const listItems = itemListRef.current.children;
-
-        for (const listItem of listItems) {
-            const listButton = listItem.firstChild;
-
-            if (!listButton) continue;
-
-            listButton.classList.remove("active-drawer-item");
-        }
-    };
-
-    const setActiveListItemClass = () => {
-        if (activeListItem) {
-            activeListItem.classList.add("active-drawer-item");
-        }
-    };
-
-    useEffect(() => {
-        clearActiveListItemClass();
-        setActiveListItemClass();
-    }, [activeListItem]);
-
     return (
         <Drawer
             sx={DrawerStyling}
@@ -71,18 +41,18 @@ const AppDrawerCustom = ({ appDrawerState, history }) => {
                     style={{ cursor: "pointer" }}
                     src={VetrinaLogoImage}
                     alt="vetrina logo"
-                    onClick={() => history.push("/", "ALLOW")}
+                    onClick={() => history.push("/dashboard", "ALLOW")}
                 />
                 <IconButton onClick={() => setAppDrawerOpen(true)}>
                     <HamburgerIcon style={HamburgerIconStyling} />
                 </IconButton>
             </Box>
             <Box>
-                <List ref={itemListRef}>
-                    <DrawerItem icon={<HomeIcon />} text="Dashboard" handleClick={setCurrentActiveListItem} />
+                <List>
+                    <DrawerItem icon={<HomeIcon />} text="Dashboard" />
                     {
                         !appDrawerOpen && (
-                            <DrawerExpandable icon={<ShoppingCartIcon />} text="Catalogue" handleClick={clearActiveListItemClass}>
+                            <DrawerExpandable icon={<ShoppingCartIcon />} text="Catalogue" >
                                 <DrawerItem text="Credits" />
                                 <DrawerItem text="Technologies" />
                                 <DrawerItem text="Applications" />
@@ -91,13 +61,13 @@ const AppDrawerCustom = ({ appDrawerState, history }) => {
                         )
                     }
 
-                    <DrawerItem icon={<ListIcon />} text="Orders" handleClick={setCurrentActiveListItem}>
+                    <DrawerItem icon={<ListIcon />} text="Orders">
                         <Typography sx={OrdersNotificationStyling}>14</Typography>
                     </DrawerItem>
-                    <DrawerItem icon={<UserIcon />} text="Customers" handleClick={setCurrentActiveListItem} />
+                    <DrawerItem icon={<UserIcon />} text="Customers" />
                     {
                         !appDrawerOpen && (
-                            <DrawerExpandable icon={<TargetIcon />} text="Marketing" handleClick={clearActiveListItemClass}>
+                            <DrawerExpandable icon={<TargetIcon />} text="Marketing">
                                 <DrawerItem text="Discount codes" />
                                 <DrawerItem text="Exit intent" />
                                 <DrawerItem text="Checkout Features" />
@@ -110,18 +80,18 @@ const AppDrawerCustom = ({ appDrawerState, history }) => {
                             </DrawerExpandable>
                         )
                     }
-                    <DrawerItem icon={<TruckIcon />} text="Delivery Options" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<DollarSignIcon />} text="Payment Options" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<BrushIcon />} text="Store Design" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<CreditCardIcon />} text="Subscription" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<CogPlanetIcon />} text="Integrations" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<NewAppIcon />} text="Extensions" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<SettingsIcon />} text="Settings" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<LogoutIcon />} text="Log out" handleClick={setCurrentActiveListItem} />
+                    <DrawerItem icon={<TruckIcon />} text="Delivery Options" />
+                    <DrawerItem icon={<DollarSignIcon />} text="Payment Options" />
+                    <DrawerItem icon={<BrushIcon />} text="Store Design" />
+                    <DrawerItem icon={<CreditCardIcon />} text="Subscription" />
+                    <DrawerItem icon={<CogPlanetIcon />} text="Integrations" />
+                    <DrawerItem icon={<NewAppIcon />} text="Extensions" />
+                    <DrawerItem icon={<SettingsIcon />} text="Settings" />
+                    <DrawerItem icon={<LogoutIcon />} text="Log out" />
                     <Divider />
-                    <DrawerItem icon={<HelpCircleIcon />} text="Customer Support" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<ShareIcon />} text="Share your shop" handleClick={setCurrentActiveListItem} />
-                    <DrawerItem icon={<EyeIcon />} text="View your shop" handleClick={setCurrentActiveListItem} />
+                    <DrawerItem icon={<HelpCircleIcon />} text="Customer Support" />
+                    <DrawerItem icon={<ShareIcon />} text="Share your shop" />
+                    <DrawerItem icon={<EyeIcon />} text="View your shop" />
                 </List>
             </Box>
             {

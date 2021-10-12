@@ -5,18 +5,13 @@ import { DrawerItemCanExpand } from "./drawer-item.component";
 
 const DrawerExpandable = ({ text, icon, children, handleClick }) => {
     const [open, setOpen] = useState(false);
+
     const toggleOpen = target => {
-        const nextValue = !open;
-
-        if (nextValue) {
-            target.classList.add("active-drawer-item");
-        }
-
-        setOpen(nextValue);
+        setOpen(!open);
     };
 
     const combinedHandleClick = ({ target }) => {
-        handleClick();
+        if (handleClick) handleClick(target);
         toggleOpen(target);
     };
 
