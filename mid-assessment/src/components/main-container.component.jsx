@@ -1,6 +1,7 @@
 import { Box } from "@mui/material";
-import WelcomeContainer from "./welcome-container.component";
-import ContentContainer from "./content-container.component";
+import DashboardPage from "../pages/dashboard.page";
+import LinkPage from "../pages/link.page";
+import { Switch, Route } from "react-router-dom";
 
 const MainContainer = ({ appDrawerOpen }) => {
     const MainContainerStyling = {
@@ -16,8 +17,10 @@ const MainContainer = ({ appDrawerOpen }) => {
 
     return (
         <Box id="main-container" sx={MainContainerStyling}>
-            <WelcomeContainer />
-            <ContentContainer />
+            <Switch>
+                <Route exact path="/" component={DashboardPage} />
+                <Route path="/*" component={LinkPage} />
+            </Switch>
         </Box>
     )
 };

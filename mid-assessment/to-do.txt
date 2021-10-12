@@ -1,2 +1,0 @@
-- Make the cards more reusable (Keep the common elements as props)
-- Add routes

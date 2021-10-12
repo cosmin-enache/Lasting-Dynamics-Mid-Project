@@ -25,11 +25,14 @@ import { ReactComponent as HelpCircleIcon } from "../assets/images/drawer/help-c
 import { ReactComponent as ShareIcon } from "../assets/images/drawer/share.svg";
 import { ReactComponent as EyeIcon } from "../assets/images/drawer/eye.svg";
 
-const AppDrawerCustom = ({ appDrawerState }) => {
+import { withRouter } from "react-router-dom";
+
+const AppDrawerCustom = ({ appDrawerState, history }) => {
     const { appDrawerOpen, setAppDrawerOpen } = appDrawerState;
 
     const [activeListItem, setActiveListItem] = useState(null);
     const itemListRef = useRef();
+
     const setCurrentActiveListItem = ({ target }) => {
         setActiveListItem(target);
     };
@@ -64,7 +67,12 @@ const AppDrawerCustom = ({ appDrawerState }) => {
             anchor="left"
         >
             <Box sx={LogoBoxStyling}>
-                <img src={VetrinaLogoImage} alt="vetrina logo" />
+                <img
+                    style={{ cursor: "pointer" }}
+                    src={VetrinaLogoImage}
+                    alt="vetrina logo"
+                    onClick={() => history.push("/", "ALLOW")}
+                />
                 <IconButton onClick={() => setAppDrawerOpen(true)}>
                     <HamburgerIcon style={HamburgerIconStyling} />
                 </IconButton>
@@ -177,4 +185,4 @@ const DrawerStyling = {
     },
 };
 
-export default AppDrawerCustom;
+export default withRouter(AppDrawerCustom);

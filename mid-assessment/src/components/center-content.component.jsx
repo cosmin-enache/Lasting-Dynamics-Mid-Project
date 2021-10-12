@@ -6,7 +6,6 @@ import { fetchNewsData } from "../news-api.interface";
 
 // Icons / Images
 import EyeIcon from "../assets/images/eye-icon.svg";
-import ChevronDownIcon from "../assets/images/chevron-down-icon.svg";
 import ArrowRightIcon from "../assets/images/arrow-right-icon.svg";
 import ArrowRightWhiteIcon from "../assets/images/arrow-right-white-icon.svg";
 import ListIcon from "../assets/images/list-icon.svg";

@@ -1,0 +1,4 @@
+- Added drawer functionality
+- Changed drawer CSS
+- Made the cards more reusable (Keep the common elements as props)
+- Added routes

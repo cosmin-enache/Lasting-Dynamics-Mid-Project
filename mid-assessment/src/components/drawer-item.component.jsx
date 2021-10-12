@@ -8,14 +8,32 @@ import {
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-const DrawerItem = ({ icon, text, children, handleClick }) => {
+import { withRouter } from "react-router-dom";
+
+const urlBasedOnLinkText = text => text.toLowerCase().split(" ").join("-");
+
+const DrawerItem = ({ icon, text, children, handleClick, history }) => {
     const ListItemButtonStyling = {
         "> *": { pointerEvents: "none" }
     };
 
+    const handleClickThenPushToRoute = event => {
+        if (handleClick) {
+            handleClick(event);
+        }
+
+        const toUrl = urlBasedOnLinkText(text);
+
+        // send to link built by the following helper function
+        history.push(
+            toUrl === "dashboard" ? "/" : toUrl,
+            "ALLOW"
+        );
+    };
+
     return (
         <ListItem disablePadding>
-            <ListItemButton onClick={handleClick} sx={ListItemButtonStyling}>
+            <ListItemButton onClick={handleClickThenPushToRoute} sx={ListItemButtonStyling}>
                 <ListItemIcon>
                     {icon}
                 </ListItemIcon>
@@ -38,6 +56,7 @@ export const DrawerItemCanExpand = ({ icon, text, expanded, handleClick }) => {
             return <ExpandMore />
         } else return null;
     };
+
     return (
         <ListItem disablePadding>
             <ListItemButton onClick={handleClick} sx={ListItemButtonStyling}>
@@ -56,4 +75,4 @@ const ListItemTextStyling = {
     left: "-15px",
 };
 
-export default DrawerItem;
+export default withRouter(DrawerItem);
