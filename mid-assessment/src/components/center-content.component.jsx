@@ -17,7 +17,6 @@ import ExtensionsMpIcon from "../assets/images/extensions-marketplace.svg";
 import DomainImage from "../assets/images/domain-www.svg";
 import FiftyProducts from "../assets/images/products-50+.svg";
 import FileTextIcon from "../assets/images/file-text.svg";
-import ExternalLinkBlueIcon from "../assets/images/external-link-blue.svg";
 import NewsCard from "./news-card.component";
 
 const CenterContent = () => {
@@ -50,19 +49,12 @@ const CenterContent = () => {
     return (
         <Grid container id="center-content" spacing={2}>
             <Grid item md={6}>
-                <InfoCard height="218px">
-                    <Box sx={CardTopRowStyling}>
-                        <Box>
-                            <img src={EyeIcon} alt="card icon" />
-                            <Typography variant="span" sx={CardTitleStyling}>
-                                Visitors
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <Typography variant="span" sx={FadedSelectStyling}>This month</Typography>
-                            <img src={ChevronDownIcon} alt="down arrow" style={ChevronDownStyling} />
-                        </Box>
-                    </Box>
+                <InfoCard
+                    height="218px"
+                    titleIcon={EyeIcon}
+                    title="Visitors"
+                    topRight={{ type: "dropdown", value: "This month" }}
+                >
                     <Box>
                         <Typography sx={FirstCardCenterStyling} variant="h2">1824</Typography>
                     </Box>
@@ -73,19 +65,12 @@ const CenterContent = () => {
                 </InfoCard>
             </Grid>
             <Grid item md={6}>
-                <InfoCard height="218px">
-                    <Box sx={CardTopRowStyling}>
-                        <Box>
-                            <img src={ListIcon} alt="card icon" />
-                            <Typography variant="span" sx={CardTitleStylingSecondary}>
-                                Orders
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <Typography variant="span" sx={FadedSelectStyling}>This month</Typography>
-                            <img src={ChevronDownIcon} alt="down arrow" style={ChevronDownStyling} />
-                        </Box>
-                    </Box>
+                <InfoCard
+                    height="218px"
+                    titleIcon={ListIcon}
+                    title="Orders"
+                    topRight={{ type: "dropdown", value: "This month" }}
+                >
                     <Box sx={SecondCardCenterStyling}>
                         <Box className="csFlexbox">
                             <Typography className="csTitle" variant="span">Orders received:</Typography>
@@ -102,7 +87,10 @@ const CenterContent = () => {
                 </InfoCard>
             </Grid>
             <Grid item md={6}>
-                <InfoCard backgroundColor="#F3A35C" height="348px">
+                <InfoCard
+                    backgroundColor="#F3A35C"
+                    height="348px"
+                >
                     <Box sx={RowFlexStyling}>
                         <Typography
                             variant="span"
@@ -126,15 +114,11 @@ const CenterContent = () => {
                 </InfoCard>
             </Grid>
             <Grid item md={6}>
-                <InfoCard height="348px">
-                    <Box sx={CardTopRowStyling}>
-                        <Box>
-                            <img src={ExtensionsMpIcon} alt="card icon" />
-                            <Typography variant="span" sx={CardTitleStyling}>
-                                Extensions Marketplace
-                            </Typography>
-                        </Box>
-                    </Box>
+                <InfoCard
+                    height="348px"
+                    titleIcon={ExtensionsMpIcon}
+                    title="Extensions Marketplace"
+                >
                     <Box sx={FourthCardCenterStyling}>
                         <Box>
                             <Box sx={FourthCardCenterSubBox}>
@@ -156,27 +140,18 @@ const CenterContent = () => {
                 </InfoCard>
             </Grid>
             <Grid item md={12}>
-                <InfoCard height="auto">
-                    <Box sx={CardTopRowStyling}>
-                        <Box>
-                            <img src={FileTextIcon} alt="card icon" />
-                            <Typography variant="span" sx={CardTitleStyling}>
-                                Latest news
-                            </Typography>
-                        </Box>
-                        <Box>
-                            <Link href="#" sx={CardBottomLinkStyling}>
-                                Visit our blog
-                                <img src={ExternalLinkBlueIcon} alt="right arrow" style={RightArrowIconStyling} />
-                            </Link>
-                        </Box>
-                    </Box>
+                <InfoCard
+                    height="auto"
+                    titleIcon={FileTextIcon}
+                    title="Latest news"
+                    topRight={{ type: "link", value: "Visit our blog" }}
+                >
                     <Box mt="20px">
                         {renderNews()}
                     </Box>
                 </InfoCard>
             </Grid>
-        </Grid>
+        </Grid >
     )
 };
 
@@ -242,41 +217,11 @@ const StoreIconStylingLarge = {
     height: "42px",
 };
 
-const CardTopRowStyling = {
-    width: "100%",
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-};
-
 const iPhoneStyling = {
     position: "relative",
     left: "20px",
     width: "113px",
     height: "228px",
-};
-
-const CardTitleStyling = {
-    position: "relative",
-    top: "-2px",
-    fontSize: "20px",
-    lineHeight: "25px",
-    marginLeft: "17px",
-};
-
-const CardTitleStylingSecondary = {
-    position: "relative",
-    top: "-3px",
-    fontSize: "22px",
-    lineHeight: "27px",
-    marginLeft: "18px",
-};
-
-const FadedSelectStyling = {
-    color: "#666666",
-    mr: "11px",
-    fontSize: "14px",
-    fontWeight: 300,
 };
 
 const FirstCardCenterStyling = {
@@ -311,12 +256,6 @@ const SecondCardCenterStyling = {
         lineHeight: "22px",
         mr: "6px",
     }
-};
-
-const ChevronDownStyling = {
-    position: "relative",
-    top: "2px",
-    fontSize: "14px",
 };
 
 const CardBottomLinkStyling = {
