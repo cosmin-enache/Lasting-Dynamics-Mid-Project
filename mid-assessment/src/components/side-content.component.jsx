@@ -1,6 +1,8 @@
 import { Grid, Box, Typography, Link, Button, Avatar } from "@mui/material";
 import InfoCard from "./info-card.component";
 
+import { withRouter } from "react-router-dom";
+
 // Icons
 import ToolIcon from "../assets/images/tool-icon.svg";
 import ChevronDownIcon from "../assets/images/chevron-down-icon.svg";
@@ -11,7 +13,7 @@ import InviteFriendIcon from "../assets/images/users.svg";
 import CustomerSupportIcon from "../assets/images/headphones.svg";
 import UserAvatarImage from "../assets/images/sample-avatar.png";
 
-const SideContent = () => {
+const SideContent = ({ history }) => {
     return (
         <Grid container id="side-content" sx={SideGridStyling}>
             <Grid item md={12} ml="24px" mb="24px">
@@ -113,7 +115,10 @@ const SideContent = () => {
                             Simone is here to help you.
                         </Typography>
                     </Box>
-                    <Button sx={ButtonContainedStyling} variant="contained">Contact us</Button>
+                    <Button
+                        sx={ButtonContainedStyling}
+                        variant="contained"
+                        onClick={() => history.push("contact-us", "ALLOW")}>Contact us</Button>
                 </InfoCard>
             </Grid>
         </Grid>
@@ -203,4 +208,4 @@ const RightArrowIconStyling = {
     left: "18px",
 };
 
-export default SideContent;
+export default withRouter(SideContent);

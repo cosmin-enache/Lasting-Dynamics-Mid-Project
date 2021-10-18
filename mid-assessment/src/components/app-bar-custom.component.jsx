@@ -1,4 +1,6 @@
-import { Toolbar, AppBar, Typography, Box, IconButton } from "@mui/material";
+import { Toolbar, AppBar, Typography, Box, IconButton, Drawer, ClickAwayListener } from "@mui/material";
+import { useState } from "react";
+import RightDrawer from "./right-drawer.component";
 
 // Icons / Images
 import ZapIcon from "../assets/images/zap-icon.svg";
@@ -6,6 +8,7 @@ import { ReactComponent as HamburgerIcon } from "../assets/images/hamburger-icon
 
 const AppBarCustom = ({ appDrawerState }) => {
     const { appDrawerOpen, setAppDrawerOpen } = appDrawerState;
+    const [rightDrawerOpen, setRightDrawerOpen] = useState(false);
 
     const AppBarStyling = {
         width: `calc(100% - ${appDrawerOpen ? 0 : 255}px)`,
@@ -18,34 +21,42 @@ const AppBarCustom = ({ appDrawerState }) => {
     };
 
     return (
-        <AppBar
-            sx={AppBarStyling}
-        >
-            <Toolbar style={ToolbarStyling}>
-                <Box>
-                    {
-                        appDrawerOpen && (
-                            <IconButton onClick={() => setAppDrawerOpen(false)} sx={HamburgerIconStyling}>
-                                <HamburgerIcon />
-                            </IconButton>
-                        )
-                    }
-                    <Typography
-                        variant="p"
-                        fontSize="17px"
-                        fontWeight={500}
-                        lineHeight="22px"
-                    >Dashboard</Typography>
-                </Box>
-                <Box sx={TopRightContentBoxStyling}>
-                    <img style={ZapIconStyling} src={ZapIcon} alt="zap icon" />
-                    <Typography variant="p" fontSize="15px" fontWeight={300}>What's new</Typography>
-                    <Typography variant="body1" sx={NotificationBubbleStyling}>
-                        2
-                    </Typography>
-                </Box>
-            </Toolbar>
-        </AppBar>
+        <>
+            <AppBar
+                sx={AppBarStyling}
+            >
+                <Toolbar style={ToolbarStyling}>
+                    <Box>
+                        {
+                            appDrawerOpen && (
+                                <IconButton onClick={() => setAppDrawerOpen(false)} sx={HamburgerIconStyling}>
+                                    <HamburgerIcon />
+                                </IconButton>
+                            )
+                        }
+                        <Typography
+                            variant="p"
+                            fontSize="17px"
+                            fontWeight={500}
+                            lineHeight="22px"
+                        >Dashboard</Typography>
+                    </Box>
+                    <Box sx={TopRightContentBoxStyling}>
+                        <IconButton onClick={() => setRightDrawerOpen(true)}>
+                            <img src={ZapIcon} alt="zap icon" />
+                        </IconButton>
+                        <Typography variant="p" fontSize="15px" fontWeight={300}>What's new</Typography>
+                        <Typography variant="body1" sx={NotificationBubbleStyling}>
+                            2
+                        </Typography>
+                    </Box>
+                </Toolbar>
+            </AppBar>
+            <RightDrawer
+                rightDrawerOpen={rightDrawerOpen}
+                setRightDrawerOpen={setRightDrawerOpen}
+            />
+        </>
     )
 };
 
